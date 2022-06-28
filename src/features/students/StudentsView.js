@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { deleteStudent } from './studentSlice';
+import { Link } from "react-router-dom";
 
 const StudentsView = () => {
     const students = useSelector(state => state.studentsReducer.students);
@@ -24,7 +25,9 @@ const StudentsView = () => {
                                 <td>{name}</td>
                                 <td>{father}</td>
                                 <td>
-                                    <button>Edit</button>
+                                    <Link to="/edit-student" state={{ id, name, father }}>
+                                        <button>Edit</button>
+                                    </Link>
                                     <button onClick={() => dispatch(deleteStudent(id))}>Delete</button>
                                 </td>
                             </tr>
