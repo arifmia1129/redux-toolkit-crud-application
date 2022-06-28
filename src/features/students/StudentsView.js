@@ -1,9 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux/es/exports';
+import { useDispatch, useSelector } from 'react-redux/es/exports';
+import { deleteStudent } from './studentSlice';
 
 const StudentsView = () => {
     const students = useSelector(state => state.studentsReducer.students);
-
+    const dispatch = useDispatch();
     return (
         <div>
             <h1>All Student</h1>
@@ -24,7 +25,7 @@ const StudentsView = () => {
                                 <td>{father}</td>
                                 <td>
                                     <button>Edit</button>
-                                    <button>Delete</button>
+                                    <button onClick={() => dispatch(deleteStudent(id))}>Delete</button>
                                 </td>
                             </tr>
                         })
