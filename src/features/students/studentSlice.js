@@ -13,7 +13,10 @@ export const studentsSlice = createSlice({
     initialState: initialStudents,
     reducers: {
         showStudents: state => state,
+        addStudent: (state, action) => {
+            state.students.push(action.payload);
+        }
     }
 })
 
-export const { showStudents } = studentsSlice.actions;
+export const { showStudents, addStudent } = studentsSlice.actions;

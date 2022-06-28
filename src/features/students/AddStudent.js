@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { useDispatch } from 'react-redux/es/hooks/useDispatch';
+import { addStudent } from './studentSlice';
+import { useNavigate } from "react-router-dom";
 
 const AddStudent = () => {
-    const { name, setName } = useState("");
-    const { father, setFather } = useState("");
-
+    const [name, setName] = useState("");
+    const [father, setFather] = useState("");
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        const student = { id: uuidv4(), name, father };
+        dispatch(addStudent(student))
+        navigate("/students");
     }
     return (
         <div>

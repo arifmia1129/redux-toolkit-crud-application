@@ -1,9 +1,9 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux/es/exports';
+import { useSelector } from 'react-redux/es/exports';
 
 const StudentsView = () => {
     const students = useSelector(state => state.studentsReducer.students);
-    const dispatch = useDispatch();
+
     return (
         <div>
             <h1>All Student</h1>
